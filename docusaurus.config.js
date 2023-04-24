@@ -6,12 +6,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'CIT中国官网',
+  tagline: '中国最好的云原生社区',
+  favicon: 'img/citlogo.jpeg',
 
   // Set the production url of your site here
-  url: 'https://comfy-pika-304f55.netlify.app',
+  url: 'https://cit965.netlify.app',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
