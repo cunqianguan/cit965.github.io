@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'CIT中国官网',
+  title: 'CIT中国',
   tagline: '中国最好的云原生社区',
   favicon: 'img/citlogo.jpeg',
 
@@ -91,7 +91,7 @@ const config = {
             title: '文档',
             items: [
               {
-                label: 'Tutorial',
+                label: '教程',
                 to: '/docs/intro',
               },
             ],
@@ -100,16 +100,12 @@ const config = {
             title: '社区',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: '微信',
+                to: '/docs/intro',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'b站',
+                href: 'https://space.bilibili.com/28187952',
               },
             ],
           },
@@ -117,12 +113,8 @@ const config = {
             title: '更多',
             items: [
               {
-                label: 'Blog',
+                label: '博客',
                 to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/cit965',
               },
             ],
           },
