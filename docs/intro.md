@@ -1,6 +1,7 @@
 ---
+sidebar_label: '欢迎回家'
 sidebar_position: 1
 ---
-# 微信
+# 欢迎回家
 
-mkjnnm
+微信群可以加：mkjnnm
