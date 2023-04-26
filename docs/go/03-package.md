@@ -272,3 +272,73 @@ Simple interest is 500
 ```
 
 正如预期的那样，首先调用 simpleinterest 包的 init 函数，然后是包级变量 p 、 r 和 t 的初始化。接下来调用主包的init函数。它检查 p 、 r 和 t 是否小于零，如果条件为真则终止。我们将在单独的教程中详细了解 if 语句。现在您可以假设 if p < 0 将检查 p 是否小于 0，如果是，程序将终止。我们为 r 和 t 编写了类似的条件。在这种情况下，所有这些条件都不成立，程序继续执行。最后调用main函数。
+
+让我们稍微修改一下这个程序来学习 init 函数的使用, 将 p 初始化为负值。
+```go
+var p, r, t = -5000.0, 10.0, 1.0 
+```
+现在，如果您运行该应用程序，您将看到 p 为负。因此，当 init 函数运行时，程序在打印 Principal is less than zero 后终止。
+```sh
+Simple interest package initialized  
+Main package initialized  
+2020/02/15 21:25:12 Principal is less than zero 
+```
+
+### 引用包注意📢
+
+在 Go 中导入包而不在代码中的任何地方使用它是非法的。如果你这样做，编译器会报错。这样做的原因是为了避免未使用的包膨胀，这将显着增加编译时间。将 main.go 中的代码替换为以下内容：
+```go
+package main
+
+import (  
+        "learnpackage/simpleinterest"
+)
+
+func main() {
+
+}
+```
+
+运行上面的程序会报错
+```sh
+# learnpackage
+./main.go:4:2: imported and not used: "learnpackage/simpleinterest"
+```
+
+但是，当应用程序处于积极开发阶段时导入包并在以后（如果不是现在）代码中的某个地方使用它们是很常见的。在那些情况下， _ 空白标识符可以帮助我们
+
+上面程序中的错误可以通过下面的代码消除
+```go
+package main
+
+import (  
+        "learnpackage/simpleinterest"
+)
+
+var _ = simpleinterest.Calculate
+
+func main() {
+
+}
+```
+
+var _ = simpleinterest.Calculate 行使错误静音。我们应该跟踪这些类型的错误消音器，如果不使用包，则在应用程序开发结束时删除它们，包括导入的包。因此，建议在 import 语句之后的包级别中编写错误消音器。
+
+有时我们需要导入一个包来确保初始化发生，即使我们不需要使用包中的任何函数或变量。例如，我们可能需要确保调用 simpleinterest 包的 init 函数，即使我们计划不在代码中的任何地方使用该包。 _ 空白标识符也可以在这种情况下使用，如下所示。
+
+```go
+package main
+
+import (  
+    _ "learnpackage/simpleinterest"
+)
+
+func main() {
+
+}
+```
+运行上面的程序将输出 Simple interest package initialized 。我们已经成功初始化了 simpleinterest 包，即使它没有在代码中的任何地方使用。
+
+这就是包。希望你喜欢阅读。请留下您宝贵的意见和反馈 :)。
+
+喜欢我的教程吗？请加入我们的社区 v: mkjnnm
