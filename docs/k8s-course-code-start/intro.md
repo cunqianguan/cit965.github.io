@@ -12,6 +12,7 @@ title: 课程介绍
 ### 第二阶段 11-20节
 - 目标：掌握阅读pr的方法
 - 地址：制作中
+- 作业答案 ： github.com:cit965/k8s-start-up
 
 
 :::tip
