@@ -1,11 +1,7 @@
 ---
 slug: workflow
 title: 工作流
-authors:
-  - name: 南哥
-    title: CIT社区成员
-    url: https://github.com/mouuii
-    image_url: https://github.com/mouuii.png
+authors: mouuii
 tags: [devops]
 ---
 ## 工作流分类

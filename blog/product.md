@@ -1,11 +1,7 @@
 ---
 slug: product
 title: 产品理论分析
-authors:
-  - name: 南哥
-    title: CIT社区成员
-    url: https://github.com/mouuii
-    image_url: https://github.com/mouuii.png
+authors: mouuii
 tags: [随想]
 ---
 

@@ -1,11 +1,7 @@
 ---
 slug: How To Edit Multiple Lines At Once In VS Code
-title: How To Edit Multiple Lines At Once In VS Code
-authors:
-  - name: 南哥
-    title: CIT社区成员
-    url: https://github.com/mouuii
-    image_url: https://github.com/mouuii.png
+title: 如何在vscode中操作多行
+authors: mouuii
 tags: [editor]
 ---
 Press Ctrl + Alt + Down / Up on Linux and Windows, or Cmd + Option + Down / Up on macOS, to insert multi-cursors below or above your current cursor:

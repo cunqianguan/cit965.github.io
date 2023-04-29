@@ -2,6 +2,9 @@
 sidebar_label: '入门编程'
 sidebar_position: 1
 title: 入门编程
+tags:
+ - go
+ - asdf
 ---
 
 ## 为什么要学习编程
