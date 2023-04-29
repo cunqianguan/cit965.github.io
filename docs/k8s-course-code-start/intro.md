@@ -11,6 +11,10 @@ title: 课程介绍
 - 地址：https://edu.51cto.com/course/33650.html
 ### 第二阶段 11-20节
 - 目标：掌握阅读pr的方法
+- 地址：制作完毕
+- 作业答案 ： github.com:cit965/k8s-start-up
+### 第三阶段 21-30节
+- 目标：开始渐入佳境
 - 地址：制作中
 - 作业答案 ： github.com:cit965/k8s-start-up
 
