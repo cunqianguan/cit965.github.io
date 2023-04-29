@@ -4,4 +4,4 @@ sidebar_position: 1
 ---
 # 欢迎回家
 
-微信群可以加：mkjnnm
+![](https://raw.githubusercontent.com/mouuii/picture/master/20230429100050.png)
