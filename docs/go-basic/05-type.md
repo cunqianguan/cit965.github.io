@@ -4,7 +4,7 @@ sidebar_position: 5
 title: 类型
 ---
 
-#### 类型
+### 类型
 
 下面是go语言中的基本类型：
 
