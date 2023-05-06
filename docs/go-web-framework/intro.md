@@ -25,4 +25,3 @@ title: Go语言实战：手写Web框架
 ### 课程资料
 
 - github地址：github.com/cit965/cithttp
-- 视频教程： 粉丝群获取
