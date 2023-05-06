@@ -1,7 +1,7 @@
 ---
-sidebar_label: '流程控制语句'
+sidebar_label: '函数'
 sidebar_position: 6
-title: 流程控制语句
+title: 函数
 ---
 
 ### 数组
