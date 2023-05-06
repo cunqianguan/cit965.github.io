@@ -255,6 +255,21 @@ func main() {
 
 Go 对显式输入非常严格。不存在自动类型提升或转换。让我们通过一个例子来看看这意味着什么。
 
+```go
+package main
+
+import (  
+    "fmt"
+)
+
+func main() {  
+    i := 55      //int
+    j := 67.8    //float64
+    sum := i + j //int + float64 not allowed
+    fmt.Println(sum)
+}
+```
+
 以上代码在 C 语言中是完全合法的。但是如果要走的话，这个不管用。I 是 int 类型，j 是 float64类型。我们试图增加2个不同类型的数字，这是不允许的。当您运行程序时，您将获得。`无效操作: i + j (不匹配的 int 和 float64类型)`
 
 要修复这个错误，i 和 j 应该是相同的类型。让我们把 j 转换成 int。T (v)是将值 v 转换为 T 类型的语法
