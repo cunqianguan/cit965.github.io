@@ -1,7 +1,7 @@
 ---
-sidebar_label: '函数'
+sidebar_label: '7.函数'
 sidebar_position: 5
-title: 函数
+title: 7.函数
 ---
 
 ### 什么是函数？

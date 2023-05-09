@@ -1,7 +1,7 @@
 ---
-sidebar_label: '流程控制语句'
+sidebar_label: '8.流程控制语句'
 sidebar_position: 6
-title: 流程控制语句
+title: 8.流程控制语句
 ---
 
 ## if else

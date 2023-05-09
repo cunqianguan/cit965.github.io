@@ -1,7 +1,7 @@
 ---
-sidebar_label: '程序结构'
+sidebar_label: '2.程序结构'
 sidebar_position: 1
-title: 程序结构
+title: 2.程序结构
 ---
 
 ## 基础组成

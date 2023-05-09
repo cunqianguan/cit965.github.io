@@ -1,7 +1,7 @@
 ---
-sidebar_label: '类型'
+sidebar_label: '5.类型'
 sidebar_position: 5
-title: 类型
+title: 5.类型
 ---
 
 ### 类型

@@ -1,7 +1,7 @@
 ---
-sidebar_label: '常量'
+sidebar_label: '6.常量'
 sidebar_position: 5
-title: 常量
+title: 6.常量
 ---
 
 ### 什么是常量

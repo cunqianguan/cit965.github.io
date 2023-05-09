@@ -1,7 +1,7 @@
 ---
-sidebar_label: '入门编程'
+sidebar_label: '1.入门编程'
 sidebar_position: 1
-title: 入门编程
+title: 1.入门编程
 tags:
  - go
  - asdf

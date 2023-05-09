@@ -1,7 +1,7 @@
 ---
-sidebar_label: '包管理'
+sidebar_label: '3.包管理'
 sidebar_position: 3
-title: 包管理
+title: 3.包管理
 ---
 
 ### 什么是包，为什么要使用他们？

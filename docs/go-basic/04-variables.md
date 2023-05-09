@@ -1,7 +1,7 @@
 ---
-sidebar_label: '变量'
+sidebar_label: '4.变量'
 sidebar_position: 4
-title: 变量
+title: 4.变量
 ---
 
 ### 什么是变量

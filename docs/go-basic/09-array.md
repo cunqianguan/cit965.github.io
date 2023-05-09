@@ -1,7 +1,7 @@
 ---
-sidebar_label: '函数'
+sidebar_label: '9.函数'
 sidebar_position: 6
-title: 函数
+title: 9.函数
 ---
 
 ### 数组
