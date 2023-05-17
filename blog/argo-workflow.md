@@ -280,7 +280,7 @@ spec:
               args:
                 - "--dockerfile=Dockerfile"
                 - "--context=git://github.com/mouuii/golang-dockerfile.git#refs/heads/main"
-                - "--destination=xxxxx"
+                - "--destination=上传到镜像仓库地址"
               volumeMounts:
                 - name: kaniko-secret
                   mountPath: "/kaniko/.docker"
@@ -297,7 +297,7 @@ spec:
                   path: config.json
 ```
 
-我们使用argo-workflow简单创建一个镜像，传入 dockersecret 和代码仓库地址，如果不熟悉，可以去百度写 kaniko。
+我们使用argo-workflow简单创建一个镜像，传入 dockersecret 和代码仓库地址，执行后，会将我们的代码打包成镜像并上传到我们配置的镜像仓库地址，如果不熟悉，可以去百度下 kaniko。
 
 ## 个人感受
 
