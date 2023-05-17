@@ -159,7 +159,7 @@ spec:
 
 
 ## 4大模版
-argo-workflow 系统重定义的模版有6种类别，如下：
+argo-workflow 系统重定义的模版有4种类别，如下：
 
 ### Container
 也许是最常见的模板类型，它会调度一个容器。模板的规范与 Kubernetes 容器规范相同，因此您可以像在 Kubernetes 中的其他任何地方一样在这里定义容器。
@@ -172,7 +172,7 @@ argo-workflow 系统重定义的模版有6种类别，如下：
 ```
 ### Script
 
-container 的便利包装器。该规范与容器相同，但添加了 source: 字段，允许您就地定义脚本。该脚本将保存到一个文件中并为您执行。脚本的结果会自动导出到 变量 `{{steps.<NAME>.outputs.result}}` 中，你可以在下一阶段使用这个结果。
+执行脚本，添加了 source: 字段，允许您就地定义脚本。该脚本将保存到一个文件中并为您执行。脚本的结果会自动导出到 变量 `{{steps.<NAME>.outputs.result}}` 中，你可以在下一阶段使用这个结果。
 ```yaml
   - name: gen-random-int
     script:
