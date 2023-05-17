@@ -5,7 +5,7 @@ authors: mouuii
 tags: [devops]
 ---
 ## argo-workflow介绍
-Argo Workflows是一个开源项目，为Kubernetes提供container-native工作流程，其主要通过Kubernetes CRD实现的。
+Argo Workflows是一个开源的容器化云原生工作流项目，其主要通过Kubernetes CRD实现的。
 
 特点如下：
 - 工作流的每一步都是一个容器
@@ -16,13 +16,15 @@ Argo Workflows是一个开源项目，为Kubernetes提供container-native工作�
 ## 安装
 
 ### 命令
-要安装 Argo Workflows，请导航至发布页面并找到您希望使用的版本（最好是最新的完整版本）。
-以下是安装命令的示例，请确保更新命令以安装正确的版本号,安装好后会在
+要安装 Argo Workflows，请导航至 Release 页面并找到您希望使用的版本（最好是最新的大版本）。
+
+以下是安装命令的示例，请确保替换 `ARGO_WORKFLOWS_VERSIO` 变量以安装正确的版本号：
 ```shell
 kubectl create namespace argo
 kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v<<ARGO_WORKFLOWS_VERSION>>/install.yaml
 ```
-安装好后我们可以使用 kubectl 命令查看 argo 命名空间下的服务。
+安装好后我们可以使用 kubectl 命令查看 argo 命名空间下的服务，我们可以看到主要是2个服务，argo-server 用来接收前端请求，workflow-controller 用来执行 crd 控制器逻辑。
+
 ![](https://raw.githubusercontent.com/mouuii/picture/master/%E6%88%AA%E5%B1%8F2023-04-25%20%E4%B8%8B%E5%8D%882.19.36.png)
 
 ### 补丁 argo-server 认证
@@ -77,7 +79,7 @@ Hello from Docker!
 This message shows that your installation appears to be working correctly.
 
 ```
-我们尝试让argo系统帮助我们运行这个容器，点击argo界面 +SUBMIT NEW WORKFLOW 按钮，将下面的yaml文件，提交到argo系统。
+我们尝试让argo系统帮助我们运行这个容器，点击argo界面 `+SUBMIT NEW WORKFLOW` 按钮，将下面的yaml文件，提交到argo系统。
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow                  # 自定义类型
@@ -151,13 +153,13 @@ spec:
 
 ```
 
-看图秒懂！我们创建了3个任务，hello2b和hello2a在hello1任务之后并发执行。同时这三个任务接受的参数不同，打印的结果也不同哦！
+看图秒懂！我们创建了3个任务，hello2b 和 hello2a 在 hello1 任务之后并发执行。同时这三个任务接受的参数不同，打印的结果也不同哦！
 
 ![](https://raw.githubusercontent.com/mouuii/picture/master/%E6%88%AA%E5%B1%8F2023-04-25%20%E4%B8%8B%E5%8D%882.42.49.png)
 
 
-## 六大模版
-定义具体的模版有6种类别，如下：
+## 4大模版
+argo-workflow 系统重定义的模版有6种类别，如下：
 
 ### Container
 也许是最常见的模板类型，它会调度一个容器。模板的规范与 Kubernetes 容器规范相同，因此您可以像在 Kubernetes 中的其他任何地方一样在这里定义容器。
@@ -170,7 +172,7 @@ spec:
 ```
 ### Script
 
-container 的便利包装器。该规范与容器相同，但添加了 source: 字段，允许您就地定义脚本。该脚本将保存到一个文件中并为您执行。脚本的结果会自动导出到 变量 `{{steps.<NAME>.outputs.result}}` 中，具体取决于它的调用方式。
+container 的便利包装器。该规范与容器相同，但添加了 source: 字段，允许您就地定义脚本。该脚本将保存到一个文件中并为您执行。脚本的结果会自动导出到 变量 `{{steps.<NAME>.outputs.result}}` 中，你可以在下一阶段使用这个结果。
 ```yaml
   - name: gen-random-int
     script:
@@ -198,14 +200,16 @@ container 的便利包装器。该规范与容器相同，但添加了 source: �
 
 ```
 ### Suspend
-暂停模板将暂停执行，持续一段时间或直到手动恢复。可以从 CLI（使用 argo resume ）、API 端点或 UI 恢复挂起模板。
+暂停模板将暂停工作流的执行，持续一段时间或直到手动恢复。用户可以使用 cli、API 接口或 UI点击操作来恢复暂停的工作流，让其继续执行。
 ```yaml
   - name: delay
     suspend:
       duration: "20s"
 ```
+
+## 2大流程控制
 ### Steps
-步骤模板允许您在一系列步骤中定义您的任务。模板的结构是“列表的列表”。外部列表将按顺序运行，内部列表将并行运行。如果要逐一运行内部列表，请使用同步功能。您可以设置各种选项来控制执行，例如 when: 子句以有条件地执行步骤。
+steps 模板允许您在一系列 steps 中定义您的任务。模板的结构是“列表的列表”。外部列表将按顺序运行，内部列表将并行运行。如果要逐一运行内部列表，请使用同步功能。您可以设置各种选项来控制执行，例如 when: 子句以有条件地执行步骤。
 在此示例中， step1 首先运行。完成后， step2a 和 step2b 将并行运行：
 ```yaml
   - name: hello-hello-hello
@@ -218,7 +222,7 @@ container 的便利包装器。该规范与容器相同，但添加了 source: �
         template: run-data-second-half
 ```
 ### Dag
-Dag 模板允许您将任务定义为依赖关系图。在 DAG 中，您列出所有任务并设置在特定任务开始之前必须完成哪些其他任务。没有任何依赖关系的任务将立即运行。在此示例中， A 首先运行。一旦完成， B 和 C 将并行运行，一旦它们都完成， D 将运行：
+dag 模板允许您将任务定义为依赖关系图。在 DAG 中，您列出所有任务并设置在特定任务开始之前必须完成哪些其他任务。没有任何依赖关系的任务将立即运行。在此示例中， A 首先运行。一旦完成， B 和 C 将并行运行，一旦它们都完成， D 将运行：
 ```yaml
   - name: diamond
     dag:
@@ -235,6 +239,65 @@ Dag 模板允许您将任务定义为依赖关系图。在 DAG 中，您列出�
         dependencies: [B, C]
         template: echo
 ```
+
+## CI 示例
+
+一般将代码构建成镜像，有两种方式 ，一种是dind，一种是使用本地构建工具，比如 kaniko，buildkit等工具。这里我们展示如何使用argo-workflow 来构建镜像。
+
+```yaml
+# in a workflow. The resource template type accepts any k8s manifest
+# (including CRDs) and can perform any `kubectl` action against it (e.g. create,
+# apply, delete, patch).
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: k8s-jobs-
+spec:
+  serviceAccountName: default
+  entrypoint: pi-tmpl
+  templates:
+  - name: pi-tmpl
+    resource:                   # indicates that this is a resource template
+      action: create            # can be any kubectl action (e.g. create, delete, apply, patch)
+      # The successCondition and failureCondition are optional expressions.
+      # If failureCondition is true, the step is considered failed.
+      # If successCondition is true, the step is considered successful.
+      # They use kubernetes label selection syntax and can be applied against any field
+      # of the resource (not just labels). Multiple AND conditions can be represented by comma
+      # delimited expressions.
+      # For more details: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+      successCondition: status.succeeded > 0
+      failureCondition: status.failed > 3
+      manifest: |               #put your kubernetes spec here
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          generateName: kaniko-pod
+        spec:
+          containers:
+            - name: kaniko
+              image: gcr.io/kaniko-project/executor:debug
+              args:
+                - "--dockerfile=Dockerfile"
+                - "--context=git://github.com/mouuii/golang-dockerfile.git#refs/heads/main"
+                - "--destination=xxxxx"
+              volumeMounts:
+                - name: kaniko-secret
+                  mountPath: "/kaniko/.docker"
+              env:
+                - name: GOOGLE_APPLICATION_CREDENTIALS
+                  value: /secret/kaniko-secret.json
+          restartPolicy: Never
+          volumes:
+            - name: kaniko-secret
+              secret:
+                secretName: dockersecret
+                items:
+                - key: .dockerconfigjson
+                  path: config.json
+```
+
+我们使用argo-workflow简单创建一个镜像，传入 dockersecret 和代码仓库地址，如果不熟悉，可以去百度写 kaniko。
 
 ## 个人感受
 
