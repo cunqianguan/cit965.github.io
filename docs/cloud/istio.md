@@ -1,7 +1,7 @@
 ---
-sidebar_label: 第十三章 istio原理与实践
-sidebar_position: 13
-title:  第十三章 istio原理与实践
+sidebar_label: 第十四章 istio原理与实践
+sidebar_position: 14
+title:  第十四章 istio原理与实践
 ---
 
 |  节   | time  | goal |

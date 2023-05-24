@@ -1,7 +1,7 @@
 ---
-sidebar_label: 第十三章 istio高级进阶
-sidebar_position: 13
-title:  第十三章 istio高级进阶
+sidebar_label: 第十五章 istio高级进阶
+sidebar_position: 15
+title:  第十五章 istio高级进阶
 ---
 
 |  节   | time  | goal |
