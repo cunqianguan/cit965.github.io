@@ -1,7 +1,7 @@
 ---
-sidebar_label: 第二章 golang进阶
-sidebar_position: 1
-title: 第二章 golang进阶
+sidebar_label: 第三章 go web框架kratos
+sidebar_position: 3
+title: 第三章 go web框架kratos
 ---
 
 |  节   | time  | goal |
