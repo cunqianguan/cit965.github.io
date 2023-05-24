@@ -10,7 +10,7 @@ title: 第十二章 应用编排
 | 2.安装helm| 10min| |
 | 3.使用helm| 10min| |
 | 4.使用helm发布你的第一个应用| 10min| |
-| 5.kustommize 介绍| 10min| |
-| 6.kustommize 使用| 10min| |
+| 5.kustomize 介绍| 10min| |
+| 6.kustomize 使用| 10min| |
 | 7.使用kustomize管理我们的应用 使用| 10min| |
 
