@@ -1,7 +1,7 @@
 ---
-sidebar_label: 26-inheritance
-sidebar_position: 26
-title: 26-inheritance
+sidebar_label: 27-polymorphism
+sidebar_position: 27
+title: 27-polymorphism
 ---
 Welcome to tutorial no. 27 in [Golang tutorial series](https://golangbot.com/learn-golang-series/).
 
