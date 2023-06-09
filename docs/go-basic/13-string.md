@@ -33,16 +33,22 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/o9OVDgEMU0)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/o9OVDgEMU0&#41;)
 
-The above program will print `Hello World`.
+[//]: # (The above program will print `Hello World`.)
+上面程序将会打印 Hello World
 
-Strings in Go are [Unicode compliant](https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/) and
-are [UTF-8 Encoded](https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/).
+[//]: # (Strings in Go are [Unicode compliant]&#40;https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/&#41; and)
 
-### Accessing individual bytes of a string
+[//]: # (are [UTF-8 Encoded]&#40;https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/&#41;.)
+Go中的字符串符合Unicode，并且是UTF-8编码的
 
-Since a string is a slice of bytes, it's possible to access each byte of a string.
+[//]: # (### Accessing individual bytes of a string)
+
+### 访问字符串中的单个字节
+
+[//]: # (Since a string is a slice of bytes, it's possible to access each byte of a string.)
+由于字符串是字节的切片，因此可以访问到字符串中的每个字节
 
 ```
 package main
@@ -65,26 +71,43 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/B3KgBBQhiN9)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/B3KgBBQhiN9&#41;)
 
-**%s is the format specifier to print a string.** In line no. 16, the input string is printed. In line no. 9 of the
-program above, **len(s) returns the number of bytes in the string** and we use
-a [for loop](https://golangbot.com/loops/) to print those bytes in hexadecimal notation. **%x is the format specifier
-for hexadecimal.** The above program outputs
+[//]: # (**%s is the format specifier to print a string.** In line no. 16, the input string is printed. In line no. 9 of the)
+
+[//]: # (program above, **len&#40;s&#41; returns the number of bytes in the string** and we use)
+
+[//]: # (a [for loop]&#40;https://golangbot.com/loops/&#41; to print those bytes in hexadecimal notation. **%x is the format specifier)
+
+[//]: # (for hexadecimal.** The above program outputs)
+
+**%s 是一个字符串的格式化标识符。**第16行代码，输入的字符串被打印出来。在上面代码的第9行，**len(s) 返回字符串中字节的数量**
+我们使用一个for循环以十六进制打印这些字节。**%x 是十六进制的格式化标识符**。上面程序结果如下：
 
 ```
 String: Hello World  
 Bytes: 48 65 6c 6c 6f 20 57 6f 72 6c 64  
 ```
 
-These are the [Unicode UT8-encoded](https://mothereff.in/utf-8#Hello%20World) values of `Hello World`. A basic
-understanding of Unicode and UTF-8 is needed to understand strings better. I recommend
-reading [https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/](https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/)
-to know more about Unicode and UTF-8.
+[//]: # (These are the [Unicode UT8-encoded]&#40;https://mothereff.in/utf-8#Hello%20World&#41; values of `Hello World`. A basic)
 
-### Accessing individual characters of a string
+[//]: # (understanding of Unicode and UTF-8 is needed to understand strings better. I recommend)
 
-Let's modify the above program a little bit to print the characters of the string.
+[//]: # (reading [https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/]&#40;https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/&#41;)
+
+[//]: # (to know more about Unicode and UTF-8.)
+
+这些是[统一码UT8编码](https://mothereff.in/utf-8#Hello%20World)
+“HelloWorld”的值。为了更好地理解字符串，需要对Unicode和UTF-8有一个基本的理解。
+我推荐阅读读数[https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/](https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/)
+了解有关Unicode和UTF-8的更多信息。
+
+[//]: # (### Accessing individual characters of a string)
+
+### 访问一个字符串中的单个字符
+
+[//]: # (Let's modify the above program a little bit to print the characters of the string.)
+让我们来修改上面程序的一些字节，以打印字符串中的字符
 
 ```
 package main
@@ -116,10 +139,13 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/ZkXmyVNsqv7)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/ZkXmyVNsqv7&#41;)
 
-In line no.17 of the program above, **%c format specifier is used to print the characters of the string** in
-the `printChars` method. The program prints
+[//]: # (In line no.17 of the program above, **%c format specifier is used to print the characters of the string** in)
+
+[//]: # (the `printChars` method. The program prints)
+
+在上面程序第17行，**在`printChars`方法中，%c 格式化标识符被用来打印字符串的字符。程序打印如下：
 
 ```
 String: Hello World  
@@ -127,8 +153,10 @@ Characters: H e l l o   W o r l d
 Bytes: 48 65 6c 6c 6f 20 57 6f 72 6c 64  
 ```
 
-Although the above program looks like a legitimate way to access the individual characters of a string, this has a
-serious bug. Let's find out what that bug is.
+[//]: # (Although the above program looks like a legitimate way to access the individual characters of a string, this has a)
+
+[//]: # (serious bug. Let's find out what that bug is.)
+尽管上面的程序看上去像是访问字符串单个字符的合法方式，但它有一个严重的错误。让我们找出那个bug是什么。
 
 ```
 package main
