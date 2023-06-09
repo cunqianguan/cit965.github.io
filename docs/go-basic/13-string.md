@@ -4,15 +4,21 @@ sidebar_position: 13
 title: 12.string
 ---
 
-Welcome to tutorial no. 14 in [Golang tutorial series](https://golangbot.com/learn-golang-series/).
+[//]: # (Welcome to tutorial no. 14 in [Golang tutorial series]&#40;https://golangbot.com/learn-golang-series/&#41;.)
+欢迎收看【Golang教程系列】第14期教程(https://golangbot.com/learn-golang-series/)。
 
-Strings deserve a special mention in Go as they are different in implementation when compared to other languages.
+[//]: # (Strings deserve a special mention in Go as they are different in implementation when compared to other languages.)
+字符串值得在Go中特别提及，因为与其他语言相比，它们在实现方面有所不同。
 
-### What is a String?
+[//]: # (### What is a String?)
 
-**A string is a [slice](https://golangbot.com/arrays-and-slices/) of bytes in Go. Strings can be created by enclosing a set of characters inside double quotes `" "`.**
+### 字符串是什么?
 
-Let's look at a simple example that creates a `string` and prints it.
+[//]: # (**A string is a [slice]&#40;https://golangbot.com/arrays-and-slices/&#41; of bytes in Go. Strings can be created by enclosing a set of characters inside double quotes `" "`.**)
+字符串在Go语言中是一个字节数组的切片。可以通过在双引号（""）中的一组字符创建
+
+[//]: # (Let's look at a simple example that creates a `string` and prints it.)
+让我们看一个创建“字符串”并打印它的简单示例
 
 ```
 package main
@@ -31,7 +37,8 @@ func main() {
 
 The above program will print `Hello World`.
 
-Strings in Go are [Unicode compliant](https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/) and are [UTF-8 Encoded](https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/).
+Strings in Go are [Unicode compliant](https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/) and
+are [UTF-8 Encoded](https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/).
 
 ### Accessing individual bytes of a string
 
@@ -60,14 +67,20 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/B3KgBBQhiN9)
 
-**%s is the format specifier to print a string.** In line no. 16, the input string is printed. In line no. 9 of the program above, **len(s) returns the number of bytes in the string** and we use a [for loop](https://golangbot.com/loops/) to print those bytes in hexadecimal notation. **%x is the format specifier for hexadecimal.** The above program outputs
+**%s is the format specifier to print a string.** In line no. 16, the input string is printed. In line no. 9 of the
+program above, **len(s) returns the number of bytes in the string** and we use
+a [for loop](https://golangbot.com/loops/) to print those bytes in hexadecimal notation. **%x is the format specifier
+for hexadecimal.** The above program outputs
 
 ```
 String: Hello World  
 Bytes: 48 65 6c 6c 6f 20 57 6f 72 6c 64  
 ```
 
-These are the [Unicode UT8-encoded](https://mothereff.in/utf-8#Hello%20World) values of `Hello World`. A basic understanding of Unicode and UTF-8 is needed to understand strings better. I recommend reading [https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/](https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/) to know more about Unicode and UTF-8.
+These are the [Unicode UT8-encoded](https://mothereff.in/utf-8#Hello%20World) values of `Hello World`. A basic
+understanding of Unicode and UTF-8 is needed to understand strings better. I recommend
+reading [https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/](https://naveenr.net/unicode-character-set-and-utf-8-utf-16-utf-32-encoding/)
+to know more about Unicode and UTF-8.
 
 ### Accessing individual characters of a string
 
@@ -105,7 +118,8 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/ZkXmyVNsqv7)
 
-In line no.17 of the program above, **%c format specifier is used to print the characters of the string** in the `printChars` method. The program prints
+In line no.17 of the program above, **%c format specifier is used to print the characters of the string** in
+the `printChars` method. The program prints
 
 ```
 String: Hello World  
@@ -113,7 +127,8 @@ Characters: H e l l o   W o r l d
 Bytes: 48 65 6c 6c 6f 20 57 6f 72 6c 64  
 ```
 
-Although the above program looks like a legitimate way to access the individual characters of a string, this has a serious bug. Let's find out what that bug is.
+Although the above program looks like a legitimate way to access the individual characters of a string, this has a
+serious bug. Let's find out what that bug is.
 
 ```
 package main
@@ -165,11 +180,18 @@ Characters: S e Ã ± o r
 Bytes: 53 65 c3 b1 6f 72  
 ```
 
-In line no. 30 of the program above, we are trying to print the characters of **Señor** and it outputs **S e Ã ± o r** which is wrong. Why does this program break for `Señor` when it works perfectly fine for `Hello World`. The reason is that the Unicode code point of `ñ` is `U+00F1` and its [UTF-8 encoding](https://mothereff.in/utf-8#%C3%B1) occupies 2 bytes `c3` and `b1`. We are trying to print characters assuming that each code point will be one byte long which is wrong. **In UTF-8 encoding a code point can occupy more than 1 byte.** So how do we solve this? This is where **rune** saves us.
+In line no. 30 of the program above, we are trying to print the characters of **Señor** and it outputs **S e Ã ± o r**
+which is wrong. Why does this program break for `Señor` when it works perfectly fine for `Hello World`. The reason is
+that the Unicode code point of `ñ` is `U+00F1` and its [UTF-8 encoding](https://mothereff.in/utf-8#%C3%B1) occupies 2
+bytes `c3` and `b1`. We are trying to print characters assuming that each code point will be one byte long which is
+wrong. **In UTF-8 encoding a code point can occupy more than 1 byte.** So how do we solve this? This is where **rune**
+saves us.
 
 ### Rune
 
-A rune is a builtin [type](https://golangbot.com/types/) in Go and it's the alias of int32. Rune represents a Unicode code point in Go. It doesn't matter how many bytes the code point occupies, it can be represented by a rune. Let's modify the above program to print characters using a rune.
+A rune is a builtin [type](https://golangbot.com/types/) in Go and it's the alias of int32. Rune represents a Unicode
+code point in Go. It doesn't matter how many bytes the code point occupies, it can be represented by a rune. Let's
+modify the above program to print characters using a rune.
 
 ```
 package main
@@ -210,7 +232,8 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/n8rsfagm2SJ)
 
-In line no. 16 of the program above, the string is converted to a [slice](https://golangbot.com/arrays-and-slices/) of runes. We then loop over it and display the characters. This program prints,
+In line no. 16 of the program above, the string is converted to a [slice](https://golangbot.com/arrays-and-slices/) of
+runes. We then loop over it and display the characters. This program prints,
 
 ```
 String: Hello World  
@@ -226,7 +249,8 @@ The above output is perfect. Just want we wanted 😀.
 
 ### Accessing individual runes using for range loop
 
-The above program is a perfect way to iterate over the individual runes of a string. But Go offers us a much easier way to do this using the **for range** loop.
+The above program is a perfect way to iterate over the individual runes of a string. But Go offers us a much easier way
+to do this using the **for range** loop.
 
 ```
 package main
@@ -249,7 +273,8 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/0ldNBeffjYI)
 
-In line no.8 of the program above, the string is iterated using `for range` loop. The loop returns the position of the byte where the rune starts along with the rune. This program outputs
+In line no.8 of the program above, the string is iterated using `for range` loop. The loop returns the position of the
+byte where the rune starts along with the rune. This program outputs
 
 ```
 S starts at byte 0  
@@ -259,7 +284,8 @@ o starts at byte 4
 r starts at byte 5  
 ```
 
-From the above output, it's clear that `ñ` occupies 2 bytes since the next character `o` starts at byte 4 instead of byte 3 😀.
+From the above output, it's clear that `ñ` occupies 2 bytes since the next character `o` starts at byte 4 instead of
+byte 3 😀.
 
 ### Creating a string from a slice of bytes
 
@@ -279,7 +305,8 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/Vr9pf8X8xO)
 
-_byteSlice_ in line no. 8 of the program above contains the [UTF-8 Encoded](https://mothereff.in/utf-8#Caf%C3%A9) hex bytes of the string `Café`. The program prints
+_byteSlice_ in line no. 8 of the program above contains the [UTF-8 Encoded](https://mothereff.in/utf-8#Caf%C3%A9) hex
+bytes of the string `Café`. The program prints
 
 ```
 Café  
@@ -323,7 +350,8 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/m8wTMOpYJP)
 
-In the above program `runeSlice` contains the Unicode code points of the string `Señor` in hexadecimal. The program outputs
+In the above program `runeSlice` contains the Unicode code points of the string `Señor` in hexadecimal. The program
+outputs
 
 ```
 Señor  
@@ -331,9 +359,13 @@ Señor
 
 ### String length
 
-The `RuneCountInString(s string) (n int)` function of the [utf8 package](https://golang.org/pkg/unicode/utf8/#RuneCountInString) can be used to find the length of the string. This method takes a string as an argument and returns the number of runes in it.
+The `RuneCountInString(s string) (n int)` function of
+the [utf8 package](https://golang.org/pkg/unicode/utf8/#RuneCountInString) can be used to find the length of the string.
+This method takes a string as an argument and returns the number of runes in it.
 
-As we discussed earlier, `len(s)` is used to find the number of bytes in the string and it doesn't return the string length. As we already discussed, some Unicode characters have code points that occupy more than 1 byte. Using `len` to find out the length of those strings will return the incorrect string length.
+As we discussed earlier, `len(s)` is used to find the number of bytes in the string and it doesn't return the string
+length. As we already discussed, some Unicode characters have code points that occupy more than 1 byte. Using `len` to
+find out the length of those strings will return the incorrect string length.
 
 ```
 package main
@@ -375,7 +407,8 @@ The above output confirms that `len(s)` and `RuneCountInString(s)` return differ
 
 ### String comparison
 
-The `==` operator is used to compare two strings for equality. If both the strings are equal, then the result is `true` else it's `false`.
+The `==` operator is used to compare two strings for equality. If both the strings are equal, then the result is `true`
+else it's `false`.
 
 ```
 package main
@@ -406,7 +439,9 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/JEAMexbvJ1s)
 
-In the `compareStrings` function above, line no. 8 compares whether the two strings `str1` and `str2` are equal using the `==` operator. If they are equal, it prints a corresponding message and the [function](https://golangbot.com/functions/) returns.
+In the `compareStrings` function above, line no. 8 compares whether the two strings `str1` and `str2` are equal using
+the `==` operator. If they are equal, it prints a corresponding message and
+the [function](https://golangbot.com/functions/) returns.
 
 The above program prints,
 
@@ -438,15 +473,18 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/RCL8SGkrBe9)
 
-In the program above, in line no. 10, `string1` is concatenated to `string2` with a space in the middle. This program prints,
+In the program above, in line no. 10, `string1` is concatenated to `string2` with a space in the middle. This program
+prints,
 
 ```
 Go is awesome  
 ```
 
-The second way to concatenate strings is using the [Sprintf](https://golang.org/pkg/fmt/#Sprintf) function of the fmt package.
+The second way to concatenate strings is using the [Sprintf](https://golang.org/pkg/fmt/#Sprintf) function of the fmt
+package.
 
-The `Sprintf` function formats a string according to the input format specifier and returns the resulting string. Let's rewrite the above program using `Sprintf` function.
+The `Sprintf` function formats a string according to the input format specifier and returns the resulting string. Let's
+rewrite the above program using `Sprintf` function.
 
 ```
 package main
@@ -465,7 +503,9 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/AgqI29aQQDu)
 
-In line no. 10 of the program above, `%s %s` is the format specifier input for `Sprintf`. This format specifier takes two strings as input and has a space in between. This will concatenate the two strings with a space in the middle. The resulting string is stored in `result`. This program also prints,
+In line no. 10 of the program above, `%s %s` is the format specifier input for `Sprintf`. This format specifier takes
+two strings as input and has a space in between. This will concatenate the two strings with a space in the middle. The
+resulting string is stored in `result`. This program also prints,
 
 ```
 Go is awesome  
@@ -494,9 +534,13 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/bv4SlSd_hp)
 
-In line no. 8 of the above program, we try to change the first character of the string to `'a'`. Any valid Unicode character within a single quote is a rune. We try to assign the rune `a` to the zeroth position of the slice. This is not allowed since the string is immutable and hence the program fails to compile with error **./prog.go:8:7: cannot assign to s\[0\]**
+In line no. 8 of the above program, we try to change the first character of the string to `'a'`. Any valid Unicode
+character within a single quote is a rune. We try to assign the rune `a` to the zeroth position of the slice. This is
+not allowed since the string is immutable and hence the program fails to compile with error **./prog.go:8:7: cannot
+assign to s\[0\]**
 
-To workaround this string immutability, strings are converted to a [slice](https://golangbot.com/arrays-and-slices/) of runes. Then that slice is mutated with whatever changes are needed and converted back to a new string.
+To workaround this string immutability, strings are converted to a [slice](https://golangbot.com/arrays-and-slices/) of
+runes. Then that slice is mutated with whatever changes are needed and converted back to a new string.
 
 ```
 package main
@@ -517,9 +561,12 @@ func main() {
 
 [Run in playground](https://play.golang.org/p/GL1cm17IP1)
 
-In line no.7 of the above program, the `mutate` function accepts a rune slice as an argument. It then changes the first element of the slice to `'a'`, converts the rune back to string and returns it. This method is called from line no. 13 of the program. `h` is converted to a slice of runes and passed to `mutate` in line no. 13. This program outputs `aello`
+In line no.7 of the above program, the `mutate` function accepts a rune slice as an argument. It then changes the first
+element of the slice to `'a'`, converts the rune back to string and returns it. This method is called from line no. 13
+of the program. `h` is converted to a slice of runes and passed to `mutate` in line no. 13. This program outputs `aello`
 
-I have created a single program in GitHub which includes everything we discussed. You can download it [here](https://github.com/golangbot/stringsexplained).
+I have created a single program in GitHub which includes everything we discussed. You can download
+it [here](https://github.com/golangbot/stringsexplained).
 
 That's it for strings. Have a great day.
 
