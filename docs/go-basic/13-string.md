@@ -194,9 +194,10 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/2hyVf8l9fiO)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/2hyVf8l9fiO&#41;)
 
-The output of the above program is
+[//]: # (The output of the above program is)
+上述程序输出如下：
 
 ```
 String: Hello World  
@@ -208,18 +209,30 @@ Characters: S e Ã ± o r
 Bytes: 53 65 c3 b1 6f 72  
 ```
 
-In line no. 30 of the program above, we are trying to print the characters of **Señor** and it outputs **S e Ã ± o r**
-which is wrong. Why does this program break for `Señor` when it works perfectly fine for `Hello World`. The reason is
-that the Unicode code point of `ñ` is `U+00F1` and its [UTF-8 encoding](https://mothereff.in/utf-8#%C3%B1) occupies 2
-bytes `c3` and `b1`. We are trying to print characters assuming that each code point will be one byte long which is
-wrong. **In UTF-8 encoding a code point can occupy more than 1 byte.** So how do we solve this? This is where **rune**
-saves us.
+[//]: # (In line no. 30 of the program above, we are trying to print the characters of **Señor** and it outputs **S e Ã ± o r**)
+
+[//]: # (which is wrong. Why does this program break for `Señor` when it works perfectly fine for `Hello World`. The reason is)
+
+[//]: # (that the Unicode code point of `ñ` is `U+00F1` and its [UTF-8 encoding]&#40;https://mothereff.in/utf-8#%C3%B1&#41; occupies 2)
+
+[//]: # (bytes `c3` and `b1`. We are trying to print characters assuming that each code point will be one byte long which is)
+
+[//]: # (wrong. **In UTF-8 encoding a code point can occupy more than 1 byte.** So how do we solve this? This is where **rune**)
+
+[//]: # (saves us.)
+
+在上述程序第30行，我们尝试打印 **Señor** 的字符，输出一个错误的 **S e Ã ± o r** 。为什么这个程序在“你好世界”中运行良好，却在“Señor”中中断。
+原因是“ñ”的Unicode编码点是“U+00F1”及其[UTF-8编码](https://mothereff.in/utf-8#%C3%B1)占用2个字节“c3”和“b1”。我们试图打印字符，
+假设每个代码点都有一个字节长，这是错误的**在UTF-8编码中，一个代码点可能占用超过1个字节。**
+那么我们如何解决这个问题呢？这就是**rune**拯救我们的地方。
 
 ### Rune
 
 A rune is a builtin [type](https://golangbot.com/types/) in Go and it's the alias of int32. Rune represents a Unicode
 code point in Go. It doesn't matter how many bytes the code point occupies, it can be represented by a rune. Let's
 modify the above program to print characters using a rune.
+
+rune 是Go语言的内置[类型](https://golangbot.com/types/)，它是int32的别名。
 
 ```
 package main
