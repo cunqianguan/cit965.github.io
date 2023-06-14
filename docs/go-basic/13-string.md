@@ -228,11 +228,14 @@ Bytes: 53 65 c3 b1 6f 72
 
 ### Rune
 
-A rune is a builtin [type](https://golangbot.com/types/) in Go and it's the alias of int32. Rune represents a Unicode
-code point in Go. It doesn't matter how many bytes the code point occupies, it can be represented by a rune. Let's
-modify the above program to print characters using a rune.
+[//]: # (A rune is a builtin [type]&#40;https://golangbot.com/types/&#41; in Go and it's the alias of int32. Rune represents a Unicode)
 
-rune 是Go语言的内置[类型](https://golangbot.com/types/)，它是int32的别名。
+[//]: # (code point in Go. It doesn't matter how many bytes the code point occupies, it can be represented by a rune. Let's)
+
+[//]: # (modify the above program to print characters using a rune.)
+
+rune 是Go语言的内置[类型](https://golangbot.com/types/)
+，它是int32的别名。在Go语言中Rune代表一个Unicode代码点。它不关心代码点占多少个字节，它可以用一个rune来表示。让我们修改上述程序用一个rune打印字符。
 
 ```
 package main
@@ -271,10 +274,13 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/n8rsfagm2SJ)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/n8rsfagm2SJ&#41;)
 
-In line no. 16 of the program above, the string is converted to a [slice](https://golangbot.com/arrays-and-slices/) of
-runes. We then loop over it and display the characters. This program prints,
+[//]: # (In line no. 16 of the program above, the string is converted to a [slice]&#40;https://golangbot.com/arrays-and-slices/&#41; of)
+
+[//]: # (runes. We then loop over it and display the characters. This program prints,)
+
+在上面程序的第16行，字符串被转换为一个runes的[切片](https://golangbot.com/arrays-and-slices/)。然后我们在上面循环并显示字符。这个程序打印如下：
 
 ```
 String: Hello World  
@@ -286,12 +292,17 @@ Characters: S e ñ o r
 Bytes: 53 65 c3 b1 6f 72  
 ```
 
-The above output is perfect. Just want we wanted 😀.
+[//]: # (The above output is perfect. Just want we wanted 😀.)
+上面输出是完美的。只是想要我们想要的 😀.
 
-### Accessing individual runes using for range loop
+[//]: # (### Accessing individual runes using for range loop)
 
-The above program is a perfect way to iterate over the individual runes of a string. But Go offers us a much easier way
-to do this using the **for range** loop.
+### 使用for range循环访问单个runes
+
+[//]: # (The above program is a perfect way to iterate over the individual runes of a string. But Go offers us a much easier way)
+
+[//]: # (to do this using the **for range** loop.)
+上面的程序是一种完美的方法来迭代字符串的各个rune。但是Go语言给我们提供了一个更简单的方法，使用 **for range** 循环来实现这一点。
 
 ```
 package main
@@ -312,10 +323,12 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/0ldNBeffjYI)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/0ldNBeffjYI&#41;)
 
-In line no.8 of the program above, the string is iterated using `for range` loop. The loop returns the position of the
-byte where the rune starts along with the rune. This program outputs
+[//]: # (In line no.8 of the program above, the string is iterated using `for range` loop. The loop returns the position of the)
+
+[//]: # (byte where the rune starts along with the rune. This program outputs)
+在上面程序的第8行中，使用 `for range` 循环来迭代字符串。循环返回rune与rune一起开始的字节。该程序输出
 
 ```
 S starts at byte 0  
@@ -325,10 +338,15 @@ o starts at byte 4
 r starts at byte 5  
 ```
 
-From the above output, it's clear that `ñ` occupies 2 bytes since the next character `o` starts at byte 4 instead of
-byte 3 😀.
+[//]: # (From the above output, it's clear that `ñ` occupies 2 bytes since the next character `o` starts at byte 4 instead of)
 
-### Creating a string from a slice of bytes
+[//]: # (byte 3 😀.)
+
+从上面的输出中可以清楚地看出，“ñ”占据了2个字节，因为下一个字符“o”从字节4开始，而不是字节3😀.
+
+[//]: # (### Creating a string from a slice of bytes)
+
+### 从字节切片创建字符串
 
 ```
 package main
@@ -344,7 +362,7 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/Vr9pf8X8xO)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/Vr9pf8X8xO&#41;)
 
 _byteSlice_ in line no. 8 of the program above contains the [UTF-8 Encoded](https://mothereff.in/utf-8#Caf%C3%A9) hex
 bytes of the string `Café`. The program prints
