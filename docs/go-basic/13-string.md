@@ -364,14 +364,18 @@ func main() {
 
 [//]: # ([Run in playground]&#40;https://play.golang.org/p/Vr9pf8X8xO&#41;)
 
-_byteSlice_ in line no. 8 of the program above contains the [UTF-8 Encoded](https://mothereff.in/utf-8#Caf%C3%A9) hex
-bytes of the string `Café`. The program prints
+[//]: # (_byteSlice_ in line no. 8 of the program above contains the [UTF-8 Encoded]&#40;https://mothereff.in/utf-8#Caf%C3%A9&#41; hex)
+
+[//]: # (bytes of the string `Café`. The program prints)
+
+上面程序的第8行中的 _byteSlice_ 包含[UTF-8编码](https://mothereff.in/utf-8#Caf%C3%A9)字符串“Café”的十六进制字节。程序打印如下
 
 ```
 Café  
 ```
 
-What if we have the decimal equivalent of hex values. Will the above program work? Let's check it out.
+[//]: # (What if we have the decimal equivalent of hex values. Will the above program work? Let's check it out.)
+如果我们有与十六进制相等的十进制数字，上面的程序行得通吗？让我们来看看
 
 ```
 package main
@@ -387,11 +391,14 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/jgsRowW6XN)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/jgsRowW6XN&#41;)
 
-Decimal values also work and the above program will also print `Café`.
+[//]: # (Decimal values also work and the above program will also print `Café`.)
+十进制值也行得通，上面程序也会打印出 `Café`。
 
-### Creating a string from a slice of runes
+[//]: # (### Creating a string from a slice of runes)
+
+### 从一个runes片段中创建字符串
 
 ```
 package main
@@ -407,24 +414,39 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/m8wTMOpYJP)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/m8wTMOpYJP&#41;)
 
-In the above program `runeSlice` contains the Unicode code points of the string `Señor` in hexadecimal. The program
-outputs
+[//]: # (In the above program `runeSlice` contains the Unicode code points of the string `Señor` in hexadecimal. The program)
+
+[//]: # (outputs)
+上面程序 `runeSlice` 包含字符串 `Señor` 十六进制形式的Unicode代码点。程序输出如下：
 
 ```
 Señor  
 ```
 
-### String length
+[//]: # (### String length)
 
-The `RuneCountInString(s string) (n int)` function of
-the [utf8 package](https://golang.org/pkg/unicode/utf8/#RuneCountInString) can be used to find the length of the string.
-This method takes a string as an argument and returns the number of runes in it.
+### 字符串长度
 
-As we discussed earlier, `len(s)` is used to find the number of bytes in the string and it doesn't return the string
-length. As we already discussed, some Unicode characters have code points that occupy more than 1 byte. Using `len` to
-find out the length of those strings will return the incorrect string length.
+[//]: # (The `RuneCountInString&#40;s string&#41; &#40;n int&#41;` function of)
+
+[//]: # (the [utf8 package]&#40;https://golang.org/pkg/unicode/utf8/#RuneCountInString&#41; can be used to find the length of the string.)
+
+[//]: # (This method takes a string as an argument and returns the number of runes in it.)
+
+[utf8 package](https://golang.org/pkg/unicode/utf8/#RuneCountInString)中的 `RuneCountInString(s string) (n int)`
+方法能够被用于得出字符串的长度。
+这个方法以一个字符串作为参数，返回其中runes的数量
+
+[//]: # (As we discussed earlier, `len&#40;s&#41;` is used to find the number of bytes in the string and it doesn't return the string)
+
+[//]: # (length. As we already discussed, some Unicode characters have code points that occupy more than 1 byte. Using `len` to)
+
+[//]: # (find out the length of those strings will return the incorrect string length.)
+
+正如我们前面讨论的那样， `len(s)` 用于获取字符串中的字节数，它并不能获取字符串长度。就像我们已经讨论过的那样，
+一些Unicode字符的代码点占用超过一个字节。使用 `len` 获取这些字符串的长度将会返回错误的字符串长度
 
 ```
 package main
@@ -448,9 +470,10 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/KBQg1qagnfC)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/KBQg1qagnfC&#41;)
 
-The output of the above program is
+[//]: # (The output of the above program is)
+上述程序输出如下：
 
 ```
 String: Señor  
@@ -462,12 +485,16 @@ Length: 4
 Number of bytes: 4  
 ```
 
-The above output confirms that `len(s)` and `RuneCountInString(s)` return different values 😀.
+[//]: # (The above output confirms that `len&#40;s&#41;` and `RuneCountInString&#40;s&#41;` return different values 😀.)
+上述输出含 `len(s)` 和 `RuneCountInString(s)` 返回了不同值 😀.
 
-### String comparison
+[//]: # (### String comparison)
+
+### 字符串比较
 
 The `==` operator is used to compare two strings for equality. If both the strings are equal, then the result is `true`
 else it's `false`.
+`==` 用于比较两个字符串是否相等。如果两个字符串是相等的，结果是 `true` 否则是 `false`
 
 ```
 package main
@@ -496,24 +523,35 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/JEAMexbvJ1s)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/JEAMexbvJ1s&#41;)
 
-In the `compareStrings` function above, line no. 8 compares whether the two strings `str1` and `str2` are equal using
-the `==` operator. If they are equal, it prints a corresponding message and
-the [function](https://golangbot.com/functions/) returns.
+[//]: # (In the `compareStrings` function above, line no. 8 compares whether the two strings `str1` and `str2` are equal using)
 
-The above program prints,
+[//]: # (the `==` operator. If they are equal, it prints a corresponding message and)
+
+[//]: # (the [function]&#40;https://golangbot.com/functions/&#41; returns.)
+
+[//]: # (The above program prints,)
+在上述程序 `compareStrings` 方法中的第8行使用 `==` 操作符比较两个字符串 `str1` 和 `str2`
+是否相等。如果他们相等，它打印相应的[函数](https://golangbot.com/functions/)返回的消息。上述程序打印如下：
 
 ```
 Go and Go are equal  
 hello and world are not equal  
 ```
 
-### String concatenation
+[//]: # (### String concatenation)
 
-There are multiple ways to perform string concatenation in Go. Let's look at a couple of them.
+### 字符串连接
 
-The most simple way to perform string concatenation is using the `+` operator.
+[//]: # (There are multiple ways to perform string concatenation in Go. Let's look at a couple of them.)
+
+[//]: # ()
+
+[//]: # (The most simple way to perform string concatenation is using the `+` operator.)
+Go中有多种方法可以执行字符串串联。让我们来看看其中的几个。
+
+执行字符串串联的最简单方法是使用“+”运算符。
 
 ```
 package main
@@ -530,7 +568,7 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/RCL8SGkrBe9)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/RCL8SGkrBe9&#41;)
 
 In the program above, in line no. 10, `string1` is concatenated to `string2` with a space in the middle. This program
 prints,
