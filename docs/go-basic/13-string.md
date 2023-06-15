@@ -1,7 +1,7 @@
 ---
-sidebar_label: 13.string
+sidebar_label: 13.字符串
 sidebar_position: 13
-title: 12.string
+title: 12.字符串
 ---
 
 [//]: # (Welcome to tutorial no. 14 in [Golang tutorial series]&#40;https://golangbot.com/learn-golang-series/&#41;.)
