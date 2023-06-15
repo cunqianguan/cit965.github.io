@@ -570,18 +570,25 @@ func main() {
 
 [//]: # ([Run in playground]&#40;https://play.golang.org/p/RCL8SGkrBe9&#41;)
 
-In the program above, in line no. 10, `string1` is concatenated to `string2` with a space in the middle. This program
-prints,
+[//]: # (In the program above, in line no. 10, `string1` is concatenated to `string2` with a space in the middle. This program)
+
+[//]: # (prints,)
+在上述程序中的第10行， `string1` 和 `string2` 通过中间一个空格连接。打印如下：
 
 ```
 Go is awesome  
 ```
 
-The second way to concatenate strings is using the [Sprintf](https://golang.org/pkg/fmt/#Sprintf) function of the fmt
-package.
+[//]: # (The second way to concatenate strings is using the [Sprintf]&#40;https://golang.org/pkg/fmt/#Sprintf&#41; function of the fmt)
 
-The `Sprintf` function formats a string according to the input format specifier and returns the resulting string. Let's
-rewrite the above program using `Sprintf` function.
+[//]: # (package.)
+第二种连接字符串的方式是使用fmt包的[Sprintf](https://golang.org/pkg/fmt/#Sprintf)方法
+
+[//]: # (The `Sprintf` function formats a string according to the input format specifier and returns the resulting string. Let's)
+
+[//]: # (rewrite the above program using `Sprintf` function.)
+
+`Sprintf` 函数根据输入格式说明符格式化字符串，并返回结果字符串。让我们使用“Sprintf”函数重写上述程序。
 
 ```
 package main
@@ -598,19 +605,26 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/AgqI29aQQDu)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/AgqI29aQQDu&#41;)
 
-In line no. 10 of the program above, `%s %s` is the format specifier input for `Sprintf`. This format specifier takes
-two strings as input and has a space in between. This will concatenate the two strings with a space in the middle. The
-resulting string is stored in `result`. This program also prints,
+[//]: # (In line no. 10 of the program above, `%s %s` is the format specifier input for `Sprintf`. This format specifier takes)
+
+[//]: # (two strings as input and has a space in between. This will concatenate the two strings with a space in the middle. The)
+
+[//]: # (resulting string is stored in `result`. This program also prints,)
+在上述程序第10行， `%s %s` 是 `Sprintf` 入参的格式化标识符。这个格式化标识符需要两个字符串作为入参，且这两个入参中间有一个空格。
+它将会通过中间一个空格连接这两个字符串。新生成的结果字符串被存储在 `result` 中。这个程序输出与上面程序输出同样结果
 
 ```
 Go is awesome  
 ```
 
-### Strings are immutable
+[//]: # (### Strings are immutable)
 
-Strings are immutable in Go. Once a string is created it's not possible to change it.
+### 字符串是不可变的
+
+[//]: # (Strings are immutable in Go. Once a string is created it's not possible to change it.)
+在Go语言中字符串是不可变的。一旦一个字符串被创建后，不可能去改变它了。
 
 ```
 package main
@@ -629,15 +643,27 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/bv4SlSd_hp)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/bv4SlSd_hp&#41;)
 
-In line no. 8 of the above program, we try to change the first character of the string to `'a'`. Any valid Unicode
-character within a single quote is a rune. We try to assign the rune `a` to the zeroth position of the slice. This is
-not allowed since the string is immutable and hence the program fails to compile with error **./prog.go:8:7: cannot
-assign to s\[0\]**
+[//]: # (In line no. 8 of the above program, we try to change the first character of the string to `'a'`. Any valid Unicode)
 
-To workaround this string immutability, strings are converted to a [slice](https://golangbot.com/arrays-and-slices/) of
-runes. Then that slice is mutated with whatever changes are needed and converted back to a new string.
+[//]: # (character within a single quote is a rune. We try to assign the rune `a` to the zeroth position of the slice. This is)
+
+[//]: # (not allowed since the string is immutable and hence the program fails to compile with error **./prog.go:8:7: cannot)
+
+[//]: # (assign to s\[0\]**)
+
+[//]: # ()
+
+[//]: # (To workaround this string immutability, strings are converted to a [slice]&#40;https://golangbot.com/arrays-and-slices/&#41; of)
+
+[//]: # (runes. Then that slice is mutated with whatever changes are needed and converted back to a new string.)
+
+在上述程序的第8行，我们试图将字符串的第一个字符改变为 `'a'` 。单引号中的任何有效Unicode字符都是rune。我们试图将rune `a`
+分配到切片的第零个位置。
+这是不允许的，因为字符串是不可变的，因此程序无法编译，并出现错误 **./prog.go:8:7: cannot assign to s\[0\]**
+
+为了绕开这个字符串不可变的属性，字符串被转换为一个runes的切片。然后这个切片会进行所需的任何更改，并转换回新的字符串。
 
 ```
 package main
@@ -656,19 +682,45 @@ func main() {
 }
 ```
 
-[Run in playground](https://play.golang.org/p/GL1cm17IP1)
+[//]: # ([Run in playground]&#40;https://play.golang.org/p/GL1cm17IP1&#41;)
 
-In line no.7 of the above program, the `mutate` function accepts a rune slice as an argument. It then changes the first
-element of the slice to `'a'`, converts the rune back to string and returns it. This method is called from line no. 13
-of the program. `h` is converted to a slice of runes and passed to `mutate` in line no. 13. This program outputs `aello`
+[//]: # (In line no.7 of the above program, the `mutate` function accepts a rune slice as an argument. It then changes the first)
 
-I have created a single program in GitHub which includes everything we discussed. You can download
-it [here](https://github.com/golangbot/stringsexplained).
+[//]: # (element of the slice to `'a'`, converts the rune back to string and returns it. This method is called from line no. 13)
 
-That's it for strings. Have a great day.
+[//]: # (of the program. `h` is converted to a slice of runes and passed to `mutate` in line no. 13. This program outputs `aello`)
 
-Please share your valuable comments and feedback.
+[//]: # ()
 
-Like my tutorials? Please [support the content](https://golangbot.com/support-the-content/).
+[//]: # (I have created a single program in GitHub which includes everything we discussed. You can download)
 
-**Next tutorial - [Pointers](https://golangbot.com/pointers/)**
+[//]: # (it [here]&#40;https://github.com/golangbot/stringsexplained&#41;.)
+
+
+[//]: # (That's it for strings. Have a great day.)
+
+[//]: # ()
+
+[//]: # (Please share your valuable comments and feedback.)
+
+[//]: # ()
+
+[//]: # (Like my tutorials? Please [support the content]&#40;https://golangbot.com/support-the-content/&#41;.)
+
+[//]: # ()
+
+[//]: # (**Next tutorial - [Pointers]&#40;https://golangbot.com/pointers/&#41;**)
+
+在上述程序的第7行， `mutate` 方法接收一个rune切片作为入参。它将切片的第一个参数改为 `'a'`， 转换回字符串并返回。在程序的第13行这个方法被调用。
+`h` 被转化为一个runes的切片并且传递给 `mutate` 这个程序输出 `aello`
+
+在GitHub上我已经创建了一个单独的工程，包含我们所讨论过的一切。你可以下载它 [here](https://github.com/golangbot/stringsexplained)
+。
+
+这就是字符串。祝你度过美好的一天。
+
+请分享您的宝贵意见和反馈。
+
+喜欢我的教程吗？ 请 [支持内容](https://golangbot.com/support-the-content/)。
+
+**下一个教程 - [指针](https://golangbot.com/pointers/)**
