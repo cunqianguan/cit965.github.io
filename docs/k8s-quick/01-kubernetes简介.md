@@ -1,5 +1,5 @@
 ---
-sidebar_label: 1
+sidebar_label: 02-为什么需要kubernetes
 sidebar_position: 1
 title: 01-kubernetes简介
 ---
