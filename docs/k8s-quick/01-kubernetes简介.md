@@ -1,7 +1,7 @@
 ---
 sidebar_label: 1
 sidebar_position: 1
-title: 第一课
+title: 01-kubernetes简介
 ---
 
 ### kubernetes 是什么

@@ -1,7 +1,7 @@
 ---
 sidebar_label: 1
 sidebar_position: 1
-title: 第一课
+title: 02-为什么需要kubernetes
 ---
 
 ### 为什么我们需要k8s
