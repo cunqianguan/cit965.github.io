@@ -1,6 +1,6 @@
 ---
 sidebar_label: 大话gitops
-sidebar_position: 2
+sidebar_position: 3
 title: 大话gitops
 tags:
  - 大话计算机
